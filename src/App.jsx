@@ -1,3 +1,4 @@
+import { useLayoutEffect } from "react";
 import { useState } from "react";
 import "./App.css";
 
@@ -12,9 +13,14 @@ export default function App() {
     } else setCount(0);
   }
 
+  useLayoutEffect(() => {
+    document.getElementsByTagName("p")[0].innerText =
+      `${count} "I only render after all the structure or the styles have been implmented"`;
+  }, [count]);
+
   return (
     <div className="useState">
-      <h2>React useState Hook</h2>
+      <h2>React useLayoutEffect Hook</h2>
       <p>{count}</p>
       <div>
         <button onClick={() => changeCount(1)}>Increment Count</button>
