@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 export default function App() {
@@ -11,6 +11,16 @@ export default function App() {
       setCount((prev) => prev + 1);
     } else setCount(0);
   }
+
+  // useEffect(() => {
+  //   document.getElementsByTagName("p")[0].innerText = "I got Re-rendered only on initial render";
+  // }, []);
+
+  useEffect(() => {
+    document.getElementsByTagName(
+      "p"
+    )[0].innerText = `${count} "I get re-rendered on every change in count"`;
+  }, [count]);
 
   return (
     <div className="useState">
